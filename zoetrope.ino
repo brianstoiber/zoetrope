@@ -99,7 +99,7 @@ void loop() {
   leds[14] = CRGB::White;
   leds[15] = CRGB::White;
   FastLED.show();
-  delay(80);
+  delay(40);
 
   leds[0] = CRGB::Black;
   leds[1] = CRGB::Black;
@@ -118,7 +118,7 @@ void loop() {
   leds[14] = CRGB::Black;
   leds[15] = CRGB::Black;
   FastLED.show();
-  delay(80); 
+  delay(40); 
 }
 
 
