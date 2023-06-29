@@ -1,0 +1,2 @@
+# zoetrope
+Arduino-based zoetrope
