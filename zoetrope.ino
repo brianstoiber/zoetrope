@@ -21,105 +21,37 @@
 
   CRGB leds[MAX_NUM_LEDS];
 
+  // Timer
+  boolean didMyOneTimeAction = false;
+
 
 
 void setup() {
 
   // Audio
-  mySoftwareSerial.begin(9600);
-  Serial.begin(115200);
   
-  Serial.println();
-  Serial.println(F("DFRobot DFPlayer Mini Demo"));
-  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
   
-  if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate with mp3.
-    Serial.println(F("Unable to begin:"));
-    Serial.println(F("1.Please recheck the connection!"));
-    Serial.println(F("2.Please insert the SD card!"));
-    while(true){
-      delay(0); // Code to compatible with ESP8266 watch dog.
-    }
-  }
-  Serial.println(F("DFPlayer Mini online."));
+  myDFPlayer.volume(30);  // Set volume value. From 0 to 30
+  myDFPlayer.play(1);  // Play the first mp3 (0001.mp3)
   
-  myDFPlayer.volume(30);  //Set volume value. From 0 to 30
-  myDFPlayer.play(1);  //Play the first mp3
-  
-  if (myDFPlayer.available()) {
-    printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
-  }
-
   
   // Motor
   pinMode(motor1pin1, OUTPUT);
   pinMode(motor1pin2, OUTPUT); 
+  
   pinMode(9, OUTPUT);
 
   analogWrite(9, 100); //RPM - 100 = 80RPM
 
-  delay(4200);
-  digitalWrite(motor1pin1, HIGH);
-  digitalWrite(motor1pin2, LOW);
 
-
+ 
+ 
   // LEDs
   FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, MAX_NUM_LEDS);
   FastLED.setBrightness(100);
-
-  delay(10200);
 }
 
 
-
-void loop() {
-  // Audio
-  static unsigned long timer = millis();
-  if (millis() - timer > 95000) {
-    timer = millis();
-    //myDFPlayer.next();  //Play next mp3 every 3 second.
-  }
- 
-
-  // LEDs
-  leds[0] = CRGB::White;
-  leds[1] = CRGB::White;
-  leds[2] = CRGB::White;
-  leds[3] = CRGB::White;
-  leds[4] = CRGB::White;
-  leds[5] = CRGB::White;
-  leds[6] = CRGB::White;
-  leds[7] = CRGB::White;
-  leds[8] = CRGB::White;
-  leds[9] = CRGB::White;
-  leds[10] = CRGB::White;
-  leds[11] = CRGB::White;
-  leds[12] = CRGB::White;
-  leds[13] = CRGB::White;
-  leds[14] = CRGB::White;
-  leds[15] = CRGB::White;
-  FastLED.show();
-  delay(40);
-
-  leds[0] = CRGB::Black;
-  leds[1] = CRGB::Black;
-  leds[2] = CRGB::Black;
-  leds[3] = CRGB::Black;
-  leds[4] = CRGB::Black;
-  leds[5] = CRGB::Black;
-  leds[6] = CRGB::Black;
-  leds[7] = CRGB::Black;
-  leds[8] = CRGB::Black;
-  leds[9] = CRGB::Black;
-  leds[10] = CRGB::Black;
-  leds[11] = CRGB::Black;
-  leds[12] = CRGB::Black;
-  leds[13] = CRGB::Black;
-  leds[14] = CRGB::Black;
-  leds[15] = CRGB::Black;
-  FastLED.show();
-  delay(40); 
-}
 
 
 
@@ -181,5 +113,85 @@ void printDetail(uint8_t type, int value){
       break;
     default:
       break;
+  }
+}
+
+
+
+
+
+void loop() {
+
+  if (didMyOneTimeAction == false)
+  {
+    didMyOneTimeAction = true;
+    
+  
+  // Audio
+  mySoftwareSerial.begin(9600);
+  Serial.begin(115200);
+  
+  Serial.println();
+  Serial.println(F("DFRobot DFPlayer Mini Demo"));
+  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
+  
+  if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate with mp3.
+    Serial.println(F("Unable to begin:"));
+    Serial.println(F("1.Please recheck the connection!"));
+    Serial.println(F("2.Please insert the SD card!"));
+    while(true){
+      delay(0); // Code to compatible with ESP8266 watch dog.
+    }
+  }
+  Serial.println(F("DFPlayer Mini online."));
+  
+  
+  // Motor
+  delay(4200);
+  digitalWrite(motor1pin1, HIGH);
+  delay(95000);      // Spin for 95 seconds
+  digitalWrite(motor1pin1, LOW);
+
+
+  
+
+  // LEDs
+  leds[0] = CRGB::White;
+  leds[1] = CRGB::White;
+  leds[2] = CRGB::White;
+  leds[3] = CRGB::White;
+  leds[4] = CRGB::White;
+  leds[5] = CRGB::White;
+  leds[6] = CRGB::White;
+  leds[7] = CRGB::White;
+  leds[8] = CRGB::White;
+  leds[9] = CRGB::White;
+  leds[10] = CRGB::White;
+  leds[11] = CRGB::White;
+  leds[12] = CRGB::White;
+  leds[13] = CRGB::White;
+  leds[14] = CRGB::White;
+  leds[15] = CRGB::White;
+  FastLED.show();
+  delay(80);
+
+  leds[0] = CRGB::Black;
+  leds[1] = CRGB::Black;
+  leds[2] = CRGB::Black;
+  leds[3] = CRGB::Black;
+  leds[4] = CRGB::Black;
+  leds[5] = CRGB::Black;
+  leds[6] = CRGB::Black;
+  leds[7] = CRGB::Black;
+  leds[8] = CRGB::Black;
+  leds[9] = CRGB::Black;
+  leds[10] = CRGB::Black;
+  leds[11] = CRGB::Black;
+  leds[12] = CRGB::Black;
+  leds[13] = CRGB::Black;
+  leds[14] = CRGB::Black;
+  leds[15] = CRGB::Black;
+  FastLED.show();
+  delay(80); 
   }
 }
