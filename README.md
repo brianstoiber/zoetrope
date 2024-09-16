@@ -4,7 +4,16 @@ Arduino-based zoetrope
 The inspiration for this project came when my family and I visited The Exploratorium in San Francisco in 2022. My son was/is obsessed with Mr. Freeze (Batman) and we found a Batman themed zoetrope designed and built by Gary and Danny Aden. My son stood in front of this for 2 hours. The following year we went back and again, he stood in front of it for at least 2 hours, if not more. I wanted to see if I could replicate this on my own so that he could watch it at home. 
 https://www.youtube.com/watch?v=AfS2kGO5lg8
 
-#Building the Zoetrope
+<ol>
+<li>The Zoetrope is started by a momentary button press.</li>
+<li>An audio file is played that runs for 91 seconds.</li>
+<li>4.2 seconds after the audio file starts, the DC motor starts spinning.</li>
+<li>10.2 seconds after the DC motor starts spinning (14.4 seconds after the audio begins), the LEDs begin to strobe at a rate of 40 milliseconds.</li>
+<li>91 seconds after the audio starts, the audio, LEDs, and motor stops spinning.</li>
+</ol>
+
+
+<h1>Building the Zoetrope</h1>
 <h2>Control</h2>
 <dl>
   <dt>Arduino</dt>
