@@ -1,6 +1,9 @@
 # zoetrope
 Arduino-based zoetrope
 
+The inspiration for this project came when my family and I visited The Exploratorium in San Francisco in 2022. My son was/is obsessed with Mr. Freeze (Batman) and we found a Batman themed zoetrope designed and built by Gary and Danny Aden. My son stood in front of this for 2 hours. The following year we went back and again, he stood in front of it for at least 2 hours, if not more. I wanted to see if I could replicate this on my own so that he could watch it at home. 
+https://www.youtube.com/watch?v=AfS2kGO5lg8
+
 # Hardware
 <h2>Microcontroller</h2>
 <b>Arduino Uno REV3 [A000066]: </b>https://www.amazon.com/dp/B008GRTSV6
@@ -28,9 +31,7 @@ Arduino-based zoetrope
     <dd>- STEPPERONLINE Stepper Motor Nema 17 Bipolar 40mm 64oz.in(45Ncm) 2A 4 Lead 3D Printer Hobby CNC<br/> - https://www.amazon.com/gp/product/B00PNEQI7W</dd>  
   <dt>DC Stepper Motor Driver</dt>
     <dd>- HiLetgo 5pcs A4988 Stepstick Stepper Motor Driver Module with Heat Sink for 3D Printer Reprap Suitable for Mendel Huxley Arduino<br/> - https://www.amazon.com/gp/product/B07BND65C8</dd>  
-
 </dl>
-
 
 <h2>Lighting</h2>
 <dl>
